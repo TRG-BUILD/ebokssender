@@ -8,10 +8,17 @@ from time import sleep
 
 import shutil
 
-
 def main(work_dir: Path, file_list: list[Path]):
+    asking : str = ""
     for file in file_list:
         print(f"Copy file {file} to {work_dir}")
+
+        if asking != 'a':
+            asking = input("Go On [y/n/a]")
+
+        if asking == "n":
+            continue
+
         org_file = file
         work_file = work_dir / org_file.name
 
@@ -38,6 +45,6 @@ if __name__ == "__main__":
 
     work_dir = Path("../test/work")
 
-    file_list = sorted([file for file in data_dir.glob("*.pdf")])
+    file_list : list = sorted([file for file in data_dir.glob("*.pdf")])
 
     main(data_dir, work_dir, file_list)
