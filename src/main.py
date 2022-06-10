@@ -12,8 +12,9 @@ import shutil
 def main(work_dir: Path, file_list: list[Path]):
     asking: str = ""
     time_spend: list = [perf_counter_ns()]
-    for file in file_list:
-        print(f"Copy file {file} to {work_dir}")
+    for idx, file in enumerate(file_list):
+        print()
+        print(f"[{(idx+1/len(file_list))}]Copy file {file} to {work_dir}")
 
         if asking != "a":
             asking = input("Go On [y/n/a]")
@@ -23,7 +24,7 @@ def main(work_dir: Path, file_list: list[Path]):
 
         work_file = work_dir / file.name
 
-        waiting_for_file = work_dir / f"{file.stem}.txt"
+        waiting_for_file = work_dir / f"{file.stem}*.txt"
 
         if waiting_for_file.exists():
             print(f"Skipping {file}...")
@@ -34,6 +35,7 @@ def main(work_dir: Path, file_list: list[Path]):
         print(f"Waiting for file: {waiting_for_file} to be computed... ")
 
         while not waiting_for_file.exists():
+
             sleep(0.3)
 
         print(
