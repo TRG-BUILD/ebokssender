@@ -1,3 +1,4 @@
+import sys
 
 """
 
@@ -45,7 +46,7 @@ def main(work_dir: Path, file_list: list[Path]):
             sleep(0.3)
 
         print(
-            f"Finished {file} in {(time_spend[-1]-perf_counter_ns())/1000000000} seconds"
+            f"Finished {file} in {(perf_counter_ns()-time_spend[-1])/1000000000} seconds"
         )
         time_spend.append(perf_counter_ns())
     else:
@@ -55,7 +56,7 @@ def main(work_dir: Path, file_list: list[Path]):
         while True:
             close = input('Press Y to exit.')
             if close.upper() == 'Y':
-                exit('Leaving Ebokssender')
+                sys.exit('Leaving Ebokssender')
 
 
 def read_input(ask: str) -> Path:
