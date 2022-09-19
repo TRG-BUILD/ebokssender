@@ -17,3 +17,14 @@ $ pyinstaller --onefile src/main.py
 ```
 
 Look for main.exe in /dist folder
+
+## Udsendelse (ebokssender.exe)
+
+Når ebokssender kører gives forslag til directories. 
+
+```sql
+\\civil.aau.dk\fileshares\ease\udsendelse
+"c:\Strålfors Files\MaxiHotfolder"
+```
+
+BEMÆRK! - Citationstegn/anførselstegn behøves ikke at sættes omkring stien.
